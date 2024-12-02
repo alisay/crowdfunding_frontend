@@ -1,6 +1,7 @@
-async function getProjects() {
+async function getProjects(projectId) {
         // First we create the URL for the request by using the Vite environment variable and the API endpoint.
-    const url = `${import.meta.env.VITE_API_URL}/projects`;
+    const url = projectId ? `${import.meta.env.VITE_API_URL}/projects/${projectId}` : `${import.meta.env.VITE_API_URL}/projects`
+    console.log("url",url)
 
     // Next we call the fetch function and pass in the url and the method. The method is set to `GET` because we are fetching data. Fetch returns a "promise".
     // If the promise "resolves" (i.e., if the back end responds) we will get the data we need in the `response` variable. If the back end fails to respond then we'll get an error.

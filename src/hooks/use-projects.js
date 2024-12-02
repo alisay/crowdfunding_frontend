@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 
 import getProjects from "../api/get-projects";
 
-export default function useProjects() {
+export default function useProjects(projectId) {
   // Here we use the useState hook to create a state variable called projects and a function to update it called setProjects. We initialize the state variable with an empty array.
   const [projects, setProjects] = useState([]);
 
@@ -13,7 +13,7 @@ export default function useProjects() {
   // We use the useEffect hook to fetch the projects from the API and update the state variables accordingly.
   // This useEffect will only run once, when the component this hook is used in is mounted.
   useEffect(() => {
-    getProjects()
+    getProjects(projectId)
       .then((projects) => {
         setProjects(projects);
         setIsLoading(false);
